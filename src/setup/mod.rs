@@ -56,6 +56,14 @@ impl Setup {
         self
     }
 
+    /// Multi threading for encoding multiple frames in parallel
+    ///
+    /// usually 1.5x cores
+    pub fn multithreading(mut self, threads: i32) -> Self {
+        self.raw.i_threads = threads;
+        self
+    }
+
     /// Please file an issue if you know what this does, because I have no idea.
     pub fn annexb(mut self, annexb: bool) -> Self {
         self.raw.b_annexb = if annexb { 1 } else { 0 };

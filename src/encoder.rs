@@ -93,8 +93,8 @@ impl Encoder {
     ///     }
     /// }
     /// ```
-    pub fn flush(self) -> Flush {
-        Flush { encoder: self }
+    pub fn flush(&self) -> Flush {
+        Flush { encoder: &self }
     }
 
     /// The width required of any input images.
@@ -120,11 +120,11 @@ impl Drop for Encoder {
 }
 
 /// Iterate through any delayed frames.
-pub struct Flush {
-    encoder: Encoder,
+pub struct Flush<'a> {
+    encoder: &'a Encoder,
 }
 
-impl Flush {
+impl Flush<'_> {
     /// Keeps flushing.
     pub fn next(&mut self) -> Option<Result<(Data, Picture)>> {
         let enc = self.encoder.raw;
