@@ -5,8 +5,8 @@ use std::fs::File;
 use x264wrap::{Colorspace, Encoder, Image, Setup};
 
 fn main() {
-    const WIDTH: usize = 1280;
-    const HEIGHT: usize = 720;
+    const WIDTH: usize = 1920;
+    const HEIGHT: usize = 1080;
 
     // Initialize things.
 
@@ -14,7 +14,8 @@ fn main() {
         Encoder::builder()
             //.fast()
             .fastfirstpass()
-            .multithreading(4)
+            .multithreading(8)
+            .repeatheaders(true)
             .fps(60, 1)
             .build(Colorspace::BGR, WIDTH as _, HEIGHT as _)
             .unwrap();
