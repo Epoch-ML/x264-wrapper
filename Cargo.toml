@@ -1,5 +1,5 @@
 [package]
-name = "x264"
+name = "x264wrap"
 description = "Encoding H.264 video."
 keywords = ["x264", "encoding", "h264", "video", "encoder"]
 repository = "https://github.com/quadrupleslap/x264"
@@ -9,7 +9,9 @@ version = "0.3.0"
 authors = ["Ram <quadrupleslap@gmail.com>"]
 
 [dependencies]
-x264-sys = "0.2.0"
+#x264-sys = "0.2.0"
+#x264-sys = {version = "0.2", path = "../../x264-rs/x264-sys"}
+x264-sys = {git = "https://github.com/rust-av/x264-rs/"}
 
 [build-dependencies]
 pkg-config = "0.3"
